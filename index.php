@@ -9,7 +9,7 @@ require_once 'libs/general.lib.php';
 # Smarty
 require_once 'smarty/Smarty.class.php';
 $tpl = new Smarty;
-
+$tpl->assign('siteurl', $config['siteurl']);
 # you should request a photo/album
 if (!isset ($_GET['p']) || empty($_GET['p']) || !preg_match('%([\w]+)/([\d]+)%i', $_GET['p'], $regs)) go_to('http://aldeke.in/', true);
 

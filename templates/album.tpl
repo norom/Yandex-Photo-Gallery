@@ -4,23 +4,23 @@
 		<title>Aldeke.in &mdash; фотографии</title>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-		<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="css/supersized.shutter.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{$siteurl}css/supersized.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{$siteurl}css/general.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{$siteurl}css/supersized.shutter.css" type="text/css" media="screen" />
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="{$siteurl}js/jquery.easing.min.js"></script>
 
-		<script type="text/javascript" src="js/supersized.3.2.7.min.js"></script>
-		<script type="text/javascript" src="js/supersized.shutter.min.js"></script>
+		<script type="text/javascript" src="{$siteurl}js/supersized.3.2.7.min.js"></script>
+		<script type="text/javascript" src="{$siteurl}js/supersized.shutter.min.js"></script>
 
 		<script type="text/javascript">
 
 			jQuery(function($){
-
 				$.supersized({
 					// Functionality
-					slide_interval          :   0,		// Length between transitions
+
+					slide_interval          :   100000,		// Length between transitions
 					transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
 					transition_speed		:	700,		// Speed of transition
 
@@ -49,7 +49,7 @@
 	<!--Demo styles (you can delete this block)-->
 
 	<ul id="demo-block">
-		<li><a href="http://buildinternet.com/project/supersized/" target="_blank"><img src="img/supersized-logo.png"/></a></li>
+		<li><a href="http://buildinternet.com/project/supersized/" target="_blank"><img src="{$siteurl}img/supersized-logo.png"/></a></li>
 		<li>Photographers: <a href="http://cargocollective.com/mariakazvan" target="_blank">Maria Kazvan</a>, <a href="http://colindub.com" target="_blank">Colin Wojno</a>, &amp; <a href="http://brookeshaden.com/" target="_blank">Brooke Shaden</a></li>
 	</ul>
 
@@ -77,7 +77,7 @@
 	<div id="controls-wrapper" class="load-item">
 		<div id="controls">
 
-			<a id="play-button"><img id="pauseplay" src="img/pause.png"/></a>
+			<a id="play-button"><img id="pauseplay" src="{$siteurl}img/pause.png"/></a>
 
 			<!--Slide counter-->
 			<div id="slidecounter">
@@ -88,7 +88,7 @@
 			<div id="slidecaption"></div>
 
 			<!--Thumb Tray button-->
-			<a id="tray-button"><img id="tray-arrow" src="img/button-tray-up.png"/></a>
+			<a id="tray-button"><img id="tray-arrow" src="{$siteurl}img/button-tray-up.png"/></a>
 
 			<!--Navigation-->
 			<ul id="slide-list"></ul>
