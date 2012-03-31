@@ -19,6 +19,10 @@ $param = $regs[2];
 if ($action == 'album') {
     # check if album is present, show photos
 
+    // http://api-fotki.yandex.ru/api/users/aldekein/
+    // http://api.yandex.ru/fotki/doc/operations-ref/album-get.xml
+    // http://api-fotki.yandex.ru/api/users/aldekein/album/183105/photos/
+
     $tpl->display('album.tpl');
 }
 else go_to('http://aldeke.in/', true);
