@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteRule ^index.php$ - [L]
+RewriteRule ^i/(.*)$ - [L]
+RewriteRule ^img/(.*)$ - [L]
+RewriteRule ^css/(.*)$ - [L]
+RewriteRule ^js/(.*)$ - [L]
+RewriteRule ^(.*)$ index.php?p=$1 [L,QSA]
