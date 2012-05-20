@@ -21,8 +21,10 @@ if ($action == 'album') {
 
     // http://api-fotki.yandex.ru/api/users/aldekein/
     // http://api.yandex.ru/fotki/doc/operations-ref/album-get.xml
+	// http://api.yandex.ru/fotki/doc/concepts/json.xml !!!
     // http://api-fotki.yandex.ru/api/users/aldekein/album/183105/photos/
 
+    $tpl->assign('albumid', $param);
     $tpl->display('album.tpl');
 }
 else go_to('http://aldeke.in/', true);

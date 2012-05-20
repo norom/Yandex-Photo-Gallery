@@ -3,98 +3,83 @@
 	<head>
 		<title>Aldeke.in &mdash; фотографии</title>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
-		<link rel="stylesheet" href="{$siteurl}css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="{$siteurl}css/general.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="{$siteurl}css/supersized.shutter.css" type="text/css" media="screen" />
-
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-		<script type="text/javascript" src="{$siteurl}js/jquery.easing.min.js"></script>
-
-		<script type="text/javascript" src="{$siteurl}js/supersized.3.2.7.min.js"></script>
-		<script type="text/javascript" src="{$siteurl}js/supersized.shutter.min.js"></script>
-
-		<script type="text/javascript">
-
-			jQuery(function($){
-				$.supersized({
-					// Functionality
-
-					slide_interval          :   100000,		// Length between transitions
-					transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-					transition_speed		:	700,		// Speed of transition
-
-					// Components
-					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
-					slides 					:  	[			// Slideshow Images
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg', url : 'http://www.nonsensesociety.com/2011/03/colin/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg', url : 'http://www.nonsensesociety.com/2011/03/colin/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg', url : 'http://www.nonsensesociety.com/2011/03/colin/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-1.jpg', url : 'http://www.nonsensesociety.com/2011/06/brooke-shaden/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-2.jpg', url : 'http://www.nonsensesociety.com/2011/06/brooke-shaden/'},
-														{ image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-3.jpg', url : 'http://www.nonsensesociety.com/2011/06/brooke-shaden/'}
-												]
-
-				});
-		    });
-
-		</script>
-
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="/js/galleria-1.2.6.js"></script>
+        <script src="/js/galleria.history.min.js"></script>
 	</head>
 <body>
 
-	<!--Demo styles (you can delete this block)-->
+<div id="loading-info">
+    Загрузка...<br>
+    <img src="/img/loading.gif" alt="Loading..." width="220" height="19">
+    <div id="loading-info-more"></div>
+</div>
 
-	<ul id="demo-block">
-		<li><a href="http://buildinternet.com/project/supersized/" target="_blank"><img src="{$siteurl}img/supersized-logo.png"/></a></li>
-		<li>Photographers: <a href="http://cargocollective.com/mariakazvan" target="_blank">Maria Kazvan</a>, <a href="http://colindub.com" target="_blank">Colin Wojno</a>, &amp; <a href="http://brookeshaden.com/" target="_blank">Brooke Shaden</a></li>
-	</ul>
+<div id="galleria" class="hidden"></div>
 
-	<!--End of styles-->
+<script>
+    var previewSize = 'M';
+    var pageTitle = 'Aldeke.in — фотографии';
 
-	<!--Thumbnail Navigation-->
-	<div id="prevthumb"></div>
-	<div id="nextthumb"></div>
+    var albumId = {$albumid};
+    var galleria;
+    $(function() {
+        // init
+        galleria = $('#galleria');
+        $.get('http://api-fotki.yandex.ru/api/users/aldekein/album/'+albumId+'/?format=json&callback=parseAlbum', function () { }, 'script')
+    });
 
-	<!--Arrow Navigation-->
-	<a id="prevslide" class="load-item"></a>
-	<a id="nextslide" class="load-item"></a>
+    var parseAlbum = function(albumData) {
+        if (typeof albumData !== 'object') $('#loading-info').html('Ошибка при загрузке информации об альбоме!');
+        else {
+            $('#loading-info-more').html(albumData.imageCount + ' фотографий');
 
-	<div id="thumb-tray" class="load-item">
-		<div id="thumb-back"></div>
-		<div id="thumb-forward"></div>
-	</div>
+            $.get('http://api-fotki.yandex.ru/api/users/aldekein/album/'+albumId+'/photos/?format=json&callback=parsePhotos', function () { }, 'script')
+        }
 
-	<!--Time Bar-->
-	<div id="progress-back" class="load-item">
-		<div id="progress-bar"></div>
-	</div>
+        // console.log(albumData);
+    };
 
-	<!--Control Bar-->
-	<div id="controls-wrapper" class="load-item">
-		<div id="controls">
+    var parsePhotos = function(photosData) {
+        if (typeof photosData !== 'object') $('#loading-info').html('Ошибка при загрузке информации о фотографиях!');
+        else {
+            var imgData, imgDataOriginal, imgDataBig;
+            // console.log(photosData);
+            document.title = pageTitle + ' — ' + photosData.title;
 
-			<a id="play-button"><img id="pauseplay" src="{$siteurl}img/pause.png"/></a>
+            for (var i = 0; i < photosData.imageCount; i++) {
+                imgData = photosData.entries[i].img[previewSize];
+                if (typeof photosData.entries[i].img.XXXL != 'undefined') {
+                    // some really small photos does not have these sizes at all
+                    imgDataBig = photosData.entries[i].img.XXXL;
+                    imgDataOriginal = photosData.entries[i].img.XXL;
+                }
+                else {
+                    imgDataBig = imgData;
+                    imgDataOriginal = imgData;
+                }
 
-			<!--Slide counter-->
-			<div id="slidecounter">
-				<span class="slidenumber"></span> / <span class="totalslides"></span>
-			</div>
+                galleria.append('<a href="'+imgDataBig.href+'"><img ' +
+                        'src="'+imgData.href+'" ' +
+                        'width="'+imgData.width+'" ' +
+                        'height="'+imgData.height+'" ' +
+                        'alt="'+photosData.entries[i].title+'" ' +
+//                        'data-big="'+imgDataOriginal.href+'" ' +   // you can uncomment this if you have descriptive titles in yandex albums
+                        '></a>');
+            }
+        }
 
-			<!--Slide captions displayed here-->
-			<div id="slidecaption"></div>
+        $('#loading-info').hide();
+        // Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js');
+        // Galleria.loadTheme('/galleria/themes/twelve/galleria.twelve.min.js');
+        // read http://galleria.io/docs/getting_started/quick_start/ for customizing for our best experience
 
-			<!--Thumb Tray button-->
-			<a id="tray-button"><img id="tray-arrow" src="{$siteurl}img/button-tray-up.png"/></a>
+        Galleria.loadTheme('/galleria-themes/folio/galleria.folio.min.js');
+        galleria.galleria().show();
+    };
 
-			<!--Navigation-->
-			<ul id="slide-list"></ul>
-
-		</div>
-	</div>
+</script>
 
 </body>
 </html>

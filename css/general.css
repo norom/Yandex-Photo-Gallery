@@ -1,3 +1,4 @@
+/*
 ul#demo-block {
     margin: 0 15px 15px 15px;
 }
@@ -16,4 +17,34 @@ ul#demo-block li {
 ul#demo-block li a {
     color: #eee;
     font-weight: bold;
+}
+*/
+
+body {
+
+}
+
+#galleria {
+    height: 800px;
+}
+
+.hidden {
+    display: none;
+}
+
+#loading-info {
+    width:270px;
+    height:150px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-75px 0 0 -135px;
+    text-align: center;
+    font: 20pt Verdana;
+}
+
+#loading-info-more {
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 16pt;
 }
