@@ -16,8 +16,9 @@ $tpl->assign('sitetitle', "Фоткер");
 # you should request a photo/album
 // if (!isset ($_GET['p']) || empty($_GET['p']) || !preg_match('%([\w]+)/([\d]+)%i', $_GET['p'], $regs)) go_to('http://aldeke.in/', true);
 
-$action = $regs[1];
-$param = $regs[2];
+$action = (isset ($_GET['action'])) ? $_GET['action'] : 'index';
+$username = (isset ($_GET['username'])) ? $_GET['username'] : '';
+$param = (isset ($_GET['param'])) ? $_GET['param'] : '';
 
 if ($action == 'album') {
     # check if album is present, show photos
@@ -26,14 +27,18 @@ if ($action == 'album') {
 	// http://api.yandex.ru/fotki/doc/concepts/json.xml !!!
     // http://api-fotki.yandex.ru/api/users/aldekein/album/183105/photos/
 
+    $tpl->assign('username', $username);
     $tpl->assign('albumid', $param);
     $tpl->display('album.tpl');
 }
-if ($action == 'u') {
+else if ($action == 'u') {
     # show user's albums
 
-    $tpl->assign('username', $param);
+    $tpl->assign('username', $username);
     $tpl->display('u.tpl');
 }
-echo "hello";
+else if ($action == 'index') {
+    $tpl->display('index.tpl');
+}
+else echo('Произошел раскол крабовой туманности в момент '.str_rot13($action));
 ?>
