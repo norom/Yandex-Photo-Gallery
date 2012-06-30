@@ -1,3 +1,7 @@
+body {
+    text-align: center;
+}
+
 body.parrots {
     background: url(http://cdn.graphicsfactory.com/clip-art/image_files/image/7/1293007-022606_birdsofafeather.jpg);
 }
@@ -58,7 +62,7 @@ body.parrots {
     width: 450px;
     background: rgba(140,140,250,0.9);
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     text-align: center;
 }
 
@@ -67,9 +71,9 @@ body.parrots {
     height: 30px;
     border-radius: 6px;
     border: 1px solid #1e90ff;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     margin-top: 15px;
-    margin-left: 50px;
+    margin-left: 45px;
 }
 
 #login-block a {
@@ -77,3 +81,14 @@ body.parrots {
     color: #111b5e;
 }
 
+#back-to-albums {
+    color: #111b5e;
+    text-decoration: none;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    padding: 5px;
+}
+
+#back-to-albums:hover {
+    background-color: #cccccc;
+}

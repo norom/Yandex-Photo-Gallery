@@ -1,6 +1,6 @@
 {include file="includes/header.tpl" customtitle="Главная" bodystyle="parrots"}
 <div id="login-block">
-    <img src="/img/3.png" alt="Фоткер">
+    <img src="/img/2.png" alt="Фоткер">
     <br>
     <br>
     <br>
@@ -11,6 +11,10 @@
         <input type="submit" value=">>">&nbsp;&nbsp;&nbsp;
 
     </form>
+    <br>
+    Или можете посмотреть <a href="/u/aldekein/171611/">какой-то случайный альбом</a>.
     <br><br>
+    <small>А еще мой исходный код доступен <a href="https://github.com/Aldekein/Yandex-Photo-Gallery">на Github</a>!</small>
+
 </div>
 {include file="includes/footer.tpl"}

@@ -1,6 +1,10 @@
 {include file="includes/header.tpl"}
 {include file="includes/load.tpl"}
 
+<a class="hidden" id="back-to-albums">
+    Назад к альбомам пользователя <span></span>
+</a>
+
 <div id="galleria" class="hidden"></div>
 
 <script>
@@ -59,9 +63,12 @@
         }
 
         $('#loading-info').hide();
+        $('#back-to-albums span').html(username);
+        $('#back-to-albums').attr('href', '/u/'+username).css('display', 'block');
+
         // Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js');
         // Galleria.loadTheme('/galleria/themes/twelve/galleria.twelve.min.js');
-        // read http://galleria.io/docs/getting_started/quick_start/ for customizing for our best experience
+        // read http://galleria.io/docs/getting_started/quick_start/ for customizing for your best experience
 
         Galleria.loadTheme('/galleria-themes/folio/galleria.folio.min.js');
         galleria.galleria().show();
