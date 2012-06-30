@@ -1,8 +1,15 @@
+Options -Indexes
+
+ErrorDocument 404 /index.php?mod=404
+
 RewriteEngine on
+RewriteBase /
+
 RewriteRule ^index.php$ - [L]
-RewriteRule ^i/(.*)$ - [L]
-RewriteRule ^img/(.*)$ - [L]
-RewriteRule ^css/(.*)$ - [L]
-RewriteRule ^js/(.*)$ - [L]
-RewriteRule ^galleria-themes/(.*)$ - [L]
-RewriteRule ^(.*)$ index.php?p=$1 [L,QSA]
+#RewriteRule ^i/(.*)$ - [L]
+#RewriteRule ^img/(.*)$ - [L]
+#RewriteRule ^css/(.*)$ - [L]
+#RewriteRule ^js/(.*)$ - [L]
+#RewriteRule ^galleria-themes/(.*)$ - [L]
+RewriteRule ^u/([^/]*)/([^/]*)$ index.php?mod=u&page=$1&param=$2&%{QUERY_STRING} [L]
+RewriteRule ^u/(.*)$ index.php?mod=u&page=$1&%{QUERY_STRING} [L]

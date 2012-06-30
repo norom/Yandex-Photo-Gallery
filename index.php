@@ -10,8 +10,9 @@ require_once 'libs/general.lib.php';
 require_once 'smarty/Smarty.class.php';
 $tpl = new Smarty;
 $tpl->assign('siteurl', $config['siteurl']);
+$tpl->assign('sitetitle', "Фоткер");
 # you should request a photo/album
-if (!isset ($_GET['p']) || empty($_GET['p']) || !preg_match('%([\w]+)/([\d]+)%i', $_GET['p'], $regs)) go_to('http://aldeke.in/', true);
+// if (!isset ($_GET['p']) || empty($_GET['p']) || !preg_match('%([\w]+)/([\d]+)%i', $_GET['p'], $regs)) go_to('http://aldeke.in/', true);
 
 $action = $regs[1];
 $param = $regs[2];
@@ -26,6 +27,12 @@ if ($action == 'album') {
 
     $tpl->assign('albumid', $param);
     $tpl->display('album.tpl');
+}
+if ($action == 'u') {
+    # show user's albums
+
+    $tpl->assign('username', $param);
+    $tpl->display('u.tpl');
 }
 else go_to('http://aldeke.in/', true);
 ?>

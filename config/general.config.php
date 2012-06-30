@@ -11,8 +11,8 @@ if (isset ($_SERVER['SERVER_NAME']) && strstr($_SERVER['SERVER_NAME'], 'aldekein
 else {
     $config =
     array (
-        'siteurl' => 'http://photo.aldeke.in/',
-        'sitepath' => '/var/www/vhosts/aldeke.in/photo/'
+        'siteurl' => 'http://fotker.fdzn.net/',
+        'sitepath' => '/var/www/vhosts/fotker.fdzn.net/'
     );
 }
 
