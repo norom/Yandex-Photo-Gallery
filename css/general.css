@@ -70,3 +70,26 @@ body {
     margin-top: 6px;
     width: 200px;
 }
+
+#login-block {
+    margin: 50px auto;
+    width: 400px;
+    background: rgba(140,140,250,0.9);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+#login-block input[type=text], #login-block input[type=password] {
+    width: 300px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #1e90ff;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+#login-block a {
+    font-style: italic;
+    color: #111b5e;
+}
