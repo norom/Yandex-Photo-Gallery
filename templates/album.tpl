@@ -35,24 +35,26 @@
             document.title = document.title + ' — ' + photosData.title;
 
             for (var i = 0; i < photosData.imageCount; i++) {
-                imgData = photosData.entries[i].img[previewSize];
-                if (typeof photosData.entries[i].img.XXXL != 'undefined') {
-                    // some really small photos does not have these sizes at all
-                    imgDataBig = photosData.entries[i].img.XXXL;
-                    imgDataOriginal = photosData.entries[i].img.XXL;
-                }
-                else {
-                    imgDataBig = imgData;
-                    imgDataOriginal = imgData;
-                }
+                if (typeof photosData.entries[i] != 'undefined') {
+                    imgData = photosData.entries[i].img[previewSize];
+                    if (typeof photosData.entries[i].img.XXXL != 'undefined') {
+                        // some really small photos does not have these sizes at all
+                        imgDataBig = photosData.entries[i].img.XXXL;
+                        imgDataOriginal = photosData.entries[i].img.XXL;
+                    }
+                    else {
+                        imgDataBig = imgData;
+                        imgDataOriginal = imgData;
+                    }
 
-                galleria.append('<a href="'+imgDataBig.href+'"><img ' +
-                        'src="'+imgData.href+'" ' +
-                        'width="'+imgData.width+'" ' +
-                        'height="'+imgData.height+'" ' +
-                        'alt="'+photosData.entries[i].title+'" ' +
-//                        'data-big="'+imgDataOriginal.href+'" ' +   // you can uncomment this if you have descriptive titles in yandex albums
-                        '></a>');
+                    galleria.append('<a href="'+imgDataBig.href+'"><img ' +
+                            'src="'+imgData.href+'" ' +
+                            'width="'+imgData.width+'" ' +
+                            'height="'+imgData.height+'" ' +
+                            'alt="'+photosData.entries[i].title+'" ' +
+    //                        'data-big="'+imgDataOriginal.href+'" ' +   // you can uncomment this if you have descriptive titles in yandex albums
+                            '></a>');
+                }
             }
         }
 

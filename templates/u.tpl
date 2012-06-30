@@ -32,7 +32,7 @@
 
 
         $(document).bind('fotker.parseAlbums', function(junk, albumsData) {
-            console.log(albumsData);
+//            console.log(albumsData);
             var albumsList = $('#albums-list');
             var albumTemplate = $('#album-template');
 
@@ -42,6 +42,7 @@
                 var albumImg = (typeof album.img == 'undefined') ? '' : album.img.S.href;
 
                 // if (album.protected) albumImg = '/img/lock.png';
+//                console.log(username);
                 if (!album.protected) albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
 
             }
