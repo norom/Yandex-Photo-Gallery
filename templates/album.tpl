@@ -1,4 +1,5 @@
 {include file="includes/header.tpl"}
+{include file="includes/load.tpl"}
 
 <div id="galleria" class="hidden"></div>
 

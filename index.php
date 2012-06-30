@@ -16,11 +16,11 @@ $tpl->assign('sitetitle', "Фоткер");
 # you should request a photo/album
 // if (!isset ($_GET['p']) || empty($_GET['p']) || !preg_match('%([\w]+)/([\d]+)%i', $_GET['p'], $regs)) go_to('http://aldeke.in/', true);
 
-$action = (isset ($_GET['action'])) ? $_GET['action'] : 'index';
+$controller = (isset ($_GET['controller'])) ? $_GET['controller'] : 'index';
 $username = (isset ($_GET['username'])) ? $_GET['username'] : '';
 $param = (isset ($_GET['param'])) ? $_GET['param'] : '';
 
-if ($action == 'album') {
+if ($controller == 'album') {
     # check if album is present, show photos
     // http://api-fotki.yandex.ru/api/users/aldekein/
     // http://api.yandex.ru/fotki/doc/operations-ref/album-get.xml
@@ -31,14 +31,14 @@ if ($action == 'album') {
     $tpl->assign('albumid', $param);
     $tpl->display('album.tpl');
 }
-else if ($action == 'u') {
+else if ($controller == 'u') {
     # show user's albums
 
     $tpl->assign('username', $username);
     $tpl->display('u.tpl');
 }
-else if ($action == 'index') {
+else if ($controller == 'index') {
     $tpl->display('index.tpl');
 }
-else echo('Произошел раскол крабовой туманности в момент '.str_rot13($action));
+else echo('Произошел раскол крабовой туманности в момент '.str_rot13($controller));
 ?>

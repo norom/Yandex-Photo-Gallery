@@ -1,4 +1,5 @@
 {include file="includes/header.tpl" customtitle="альбомы пользователя `$username`"}
+{include file="includes/load.tpl"}
 
 <div id="albums-list" class="hidden"></div>
 
