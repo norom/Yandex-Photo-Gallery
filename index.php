@@ -3,8 +3,10 @@
 require_once 'config/general.config.php';
 
 # load libs
-# require_once 'libs/db.lib.php';
+require_once 'libs/db.lib.php';
+require_once 'config/database.config.php';
 require_once 'libs/general.lib.php';
+
 
 # Smarty
 require_once 'smarty/Smarty.class.php';
@@ -19,7 +21,6 @@ $param = $regs[2];
 
 if ($action == 'album') {
     # check if album is present, show photos
-
     // http://api-fotki.yandex.ru/api/users/aldekein/
     // http://api.yandex.ru/fotki/doc/operations-ref/album-get.xml
 	// http://api.yandex.ru/fotki/doc/concepts/json.xml !!!
@@ -34,5 +35,5 @@ if ($action == 'u') {
     $tpl->assign('username', $param);
     $tpl->display('u.tpl');
 }
-else go_to('http://aldeke.in/', true);
+echo "hello";
 ?>
