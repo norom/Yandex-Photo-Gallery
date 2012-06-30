@@ -1,11 +1,11 @@
 <?
 
-require_once '/controllers/abstract.controller.php';
+require_once 'controllers/abstract.controller.php';
 
 class Router{
     static function route($controller = 'index', $action = 'index'){
         try{
-        require_once '/controllers/'.$controller.'.php';
+        require_once 'controllers/'.$controller.'.php';
         $controller = $controller.'Controller';
         $worker = new $controller;
         $action = $action.'Action';
