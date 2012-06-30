@@ -39,9 +39,10 @@
             for (var albumInternalId in albumsData.entries) {
                 var album = albumsData.entries[albumInternalId];
                 var albumId = album.id.split(':').pop();
+                var albumImg = (typeof album.img == 'undefined') ? '' : album.img.S.href;
                 // var link = $("<a/>").html(album.title).attr('href', '/u/'+username+'/'+albumId);
-                console.log(album.img);
-                albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: album.img.s.href }));
+
+                albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
 
             }
 

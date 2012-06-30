@@ -53,8 +53,20 @@ body {
     float: left;
     margin: 10px;
     width: 200px;
-    height: 200px;
+    height: 160px;
     background-color: rgba(0,0,0,0.5);
     padding: 10px;
     color: white;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+#albums-list .album:hover {
+    background-color: rgba(0,0,0,0.8)
+}
+
+#albums-list .album img {
+    clear: both;
+    margin-top: 6px;
+    width: 200px;
 }
