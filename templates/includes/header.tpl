@@ -10,4 +10,4 @@
     <script src="/js/galleria-1.2.6.js"></script>
     <script src="/js/galleria.history.min.js"></script>
 </head>
-<body>
+<body{if isset($bodystyle)} class="{$bodystyle}"{/if}>

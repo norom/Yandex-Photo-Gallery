@@ -1,26 +1,4 @@
-/*
-ul#demo-block {
-    margin: 0 15px 15px 15px;
-}
-
-ul#demo-block li {
-    margin: 0 0 10px 0;
-    padding: 10px;
-    display: inline;
-    float: left;
-    clear: both;
-    color: #aaa;
-    background: url('img/bg-black.png');
-    font: 11px Helvetica, Arial, sans-serif;
-}
-
-ul#demo-block li a {
-    color: #eee;
-    font-weight: bold;
-}
-*/
-
-body {
+body.parrots {
     background: url(http://cdn.graphicsfactory.com/clip-art/image_files/image/7/1293007-022606_birdsofafeather.jpg);
 }
 
@@ -73,23 +51,25 @@ body {
 
 #login-block {
     margin: 50px auto;
-    width: 400px;
+    width: 450px;
     background: rgba(140,140,250,0.9);
     border-radius: 10px;
     padding: 20px;
     text-align: center;
 }
 
-#login-block input[type=text], #login-block input[type=password] {
-    width: 300px;
+#login-block input[type=text] {
+    width: 330px;
     height: 30px;
     border-radius: 6px;
     border: 1px solid #1e90ff;
     padding: 5px;
     margin-top: 15px;
+    margin-left: 50px;
 }
 
 #login-block a {
     font-style: italic;
     color: #111b5e;
 }
+
