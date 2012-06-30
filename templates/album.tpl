@@ -5,14 +5,15 @@
 
 <script>
     var previewSize = 'M';
-    var pageTitle = 'Aldeke.in — фотографии';
 
     var albumId = {$albumid};
+    var username = "{$username}";
+
     var galleria;
     $(function() {
         // init
         galleria = $('#galleria');
-        $.get('http://api-fotki.yandex.ru/api/users/aldekein/album/'+albumId+'/?format=json&callback=parseAlbum', function () { }, 'script')
+        $.get('http://api-fotki.yandex.ru/api/users/'+username+'/album/'+albumId+'/?format=json&callback=parseAlbum', function () { }, 'script')
     });
 
     var parseAlbum = function(albumData) {
@@ -20,7 +21,7 @@
         else {
             $('#loading-info-more').html(albumData.imageCount + ' фотографий');
 
-            $.get('http://api-fotki.yandex.ru/api/users/aldekein/album/'+albumId+'/photos/?format=json&callback=parsePhotos', function () { }, 'script')
+            $.get('http://api-fotki.yandex.ru/api/users/'+username+'/album/'+albumId+'/photos/?format=json&callback=parsePhotos', function () { }, 'script')
         }
 
         // console.log(albumData);
@@ -31,7 +32,7 @@
         else {
             var imgData, imgDataOriginal, imgDataBig;
             // console.log(photosData);
-            document.title = pageTitle + ' — ' + photosData.title;
+            document.title = document.title + ' — ' + photosData.title;
 
             for (var i = 0; i < photosData.imageCount; i++) {
                 imgData = photosData.entries[i].img[previewSize];
