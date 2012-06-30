@@ -12,7 +12,6 @@ else {
     $dbname="taxer";
 }
 
-$pdodb = db::getInstance();
-$pdodb->config($dbserver, $dbname, $dbuser, $dbpass);
+db::getInstance()->config($dbserver, $dbname, $dbuser, $dbpass);
 
 ?>

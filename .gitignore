@@ -1,2 +1,3 @@
-
-/templates_c
+/.idea/
+/templates_c/
+/config/database.config.php
