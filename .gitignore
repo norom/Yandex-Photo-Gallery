@@ -1,3 +1,4 @@
 /.idea/
+/.idea/*
 /templates_c/
 /config/database.config.php
