@@ -5,7 +5,7 @@
 
 <script id="album-template" type="text/html">
     {literal}
-    <a class="album" href="${href}">${linktitle}<img src="${albumpreview}"/></a>
+    <a class="album" href="${href}"><div class="title">${linktitle}</div><img src="${albumpreview}"/></a>
     {/literal}
 </script>
 
@@ -40,9 +40,9 @@
                 var album = albumsData.entries[albumInternalId];
                 var albumId = album.id.split(':').pop();
                 var albumImg = (typeof album.img == 'undefined') ? '' : album.img.S.href;
-                // var link = $("<a/>").html(album.title).attr('href', '/u/'+username+'/'+albumId);
 
-                albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
+                // if (album.protected) albumImg = '/img/lock.png';
+                if (!album.protected) albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
 
             }
 
