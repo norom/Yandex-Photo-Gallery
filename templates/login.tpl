@@ -1,6 +1,6 @@
 {include file="includes/header.tpl" customtitle="Главная" bodystyle="parrots"}
 <div id="login-block">
-    <img src="/img/2.png" alt="Фоткер">
+    <img src="/img/3.png" alt="Фоткер">
     <br>
     <br>
     <br>
