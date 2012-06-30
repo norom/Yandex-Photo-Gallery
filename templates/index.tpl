@@ -5,8 +5,8 @@
     <br>
     <br>
     Введите URL альбома или имя пользователя:
-    <form method="post" action="/user/login/">
-    <input name="login" type="text" placeholder="URL или имя пользователя" value="">
+    <form method="get">
+    <input name="search" type="text" placeholder="URL или имя пользователя" value="">
 
         <input type="submit" value=">>">&nbsp;&nbsp;&nbsp;
 

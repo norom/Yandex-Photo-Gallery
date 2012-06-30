@@ -2,6 +2,13 @@
 
 class indexController extends Controller{
     public function indexAction(){
-        $this->tpl->display('login.tpl');
+        if(!isset ($_GET['search'])){
+            $this->tpl->display('index.tpl');
+        }
+        else{
+            $prepare = $_GET['search'];
+            $user = $prepare;
+            Router::redirectUrl('u/'.$user.'/');
+        }
     }
 }
