@@ -5,6 +5,8 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="{$siteurl}css/general.css" type="text/css" media="screen" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="/js/fotker.js"></script>
     <script src="/js/galleria-1.2.6.js"></script>
     <script src="/js/galleria.history.min.js"></script>
 </head>

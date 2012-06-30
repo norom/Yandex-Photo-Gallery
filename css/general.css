@@ -21,7 +21,7 @@ ul#demo-block li a {
 */
 
 body {
-
+    background: url(http://images3.wikia.nocookie.net/__cb20100801194161/spore/images/4/42/Background_Tile.png);
 }
 
 #galleria {
@@ -47,4 +47,14 @@ body {
     margin-top: 10px;
     color: #aaa;
     font-size: 16pt;
+}
+
+#albums-list .album {
+    float: left;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+    color: white;
 }
