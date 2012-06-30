@@ -1,12 +1,12 @@
 {include file="includes/header.tpl" customtitle="Нормальный интерфейс для Яндекс.фоток"}
-<div xmlns="http://www.w3.org/1999/html">
-    логин, например <br>
+<div>
+    Фоткер <br>
     <form method="post" action="/user/login/">
-    <input name="login"> логин</br>
+    <input name="login"> email</br>
     <input name="pass"> пароль</br>
-    <input type="submit"></br>
+    <input type="submit" value="Войти"></br>
+        <a href="/user/registration">Регистрация</a>
     </form>
+    или просто зайди /u/user/album
 </div>
-
-
 {include file="includes/footer.tpl"}
