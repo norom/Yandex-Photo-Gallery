@@ -11,28 +11,19 @@
 
 <script type="text/javascript">
     var username = "{$username}";
+    var timeoutTimeout;
 
     $(function() {
-        // init
+        timeoutTimeout = setTimeout(function() {
+            $('#loading-info').html('Ошибка при загрузке информации о пользователе! Неверное имя пользователя или таймаут соединения.');
+        }, 6789);
 
         $.ajax({
             url: 'http://api-fotki.yandex.ru/api/users/'+username+'/albums/?format=json&callback=parseAlbums',
-            error: function(XMLHttpRequest, textStatus, errorThrown) { alert('not found'); },
-            dataType: 'script',
-            statusCode: {
-                404: function() {
-                    alert("user not found");
-                }
-            }
-        }).fail(function() { alert("error"); });
-
-        // all of these ^^^^^^^^^^^ fails fail! FUCK! how to catch 404?!
-        // maybe we should use setTimeout and reset timeout on success
-
-
+            dataType: 'script'
+        });
 
         $(document).bind('fotker.parseAlbums', function(junk, albumsData) {
-//            console.log(albumsData);
             var albumsList = $('#albums-list');
             var albumTemplate = $('#album-template');
 
@@ -42,8 +33,7 @@
                 var albumImg = (typeof album.img == 'undefined') ? '' : album.img.S.href;
 
                 // if (album.protected) albumImg = '/img/lock.png';
-//                console.log(username);
-                if (!album.protected) albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
+                if (!album.protected && album.imageCount > 0) albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
 
             }
 
@@ -52,6 +42,16 @@
         });
 
     });
+
+    var parseAlbums = function(albumsData) {
+        clearTimeout(timeoutTimeout);
+
+        if (typeof albumsData !== 'object') $('#loading-info').html('Ошибка при загрузке информации об альбомах пользователя!');
+        else {
+            $(document).trigger('fotker.parseAlbums', [albumsData]);
+        }
+    };
+
 </script>
 
 {include file="includes/footer.tpl"}
