@@ -30,7 +30,7 @@
             for (var albumInternalId in albumsData.entries) {
                 var album = albumsData.entries[albumInternalId];
                 var albumId = album.id.split(':').pop();
-                var albumImg = (typeof album.img == 'undefined') ? '' : album.img.S.href;
+                var albumImg = (typeof album.img == 'undefined') ? '' : ((typeof album.img.S == 'undefined') ? '' : album.img.S.href);
 
                 // if (album.protected) albumImg = '/img/lock.png';
                 if (!album.protected && album.imageCount > 0) albumsList.append(albumTemplate.tmpl({ href: '/u/'+username+'/'+albumId, linktitle: album.title, albumpreview: albumImg }));
