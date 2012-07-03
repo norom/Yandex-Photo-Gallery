@@ -1,33 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<title>Aldeke.in &mdash; фотографии</title>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" href="{$siteurl}css/general.css" type="text/css" media="screen" />
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="/js/galleria-1.2.6.js"></script>
-        <script src="/js/galleria.history.min.js"></script>
-	</head>
-<body>
+{include file="includes/header.tpl"}
+{include file="includes/load.tpl"}
 
-<div id="loading-info">
-    Загрузка...<br>
-    <img src="/img/loading.gif" alt="Loading..." width="220" height="19">
-    <div id="loading-info-more"></div>
-</div>
+<a href="/u/{$username}" class="hidden" id="back-to-albums">
+    Назад к альбомам пользователя <span>{$username}</span>
+</a>
 
 <div id="galleria" class="hidden"></div>
 
 <script>
     var previewSize = 'M';
-    var pageTitle = 'Aldeke.in — фотографии';
 
     var albumId = {$albumid};
+    var username = "{$username}";
+
     var galleria;
     $(function() {
         // init
         galleria = $('#galleria');
-        $.get('http://api-fotki.yandex.ru/api/users/aldekein/album/'+albumId+'/?format=json&callback=parseAlbum', function () { }, 'script')
+        $.get('http://api-fotki.yandex.ru/api/users/'+username+'/album/'+albumId+'/?format=json&callback=parseAlbum', function () { }, 'script')
     });
 
     var parseAlbum = function(albumData) {
@@ -35,55 +25,62 @@
         else {
             $('#loading-info-more').html(albumData.imageCount + ' фотографий');
 
-            $.get('http://api-fotki.yandex.ru/api/users/aldekein/album/'+albumId+'/photos/?format=json&callback=parsePhotos', function () { }, 'script')
+            // console.log('http://api-fotki.yandex.ru/api/users/'+username+'/album/'+albumId+'/photos/rcreated/?format=json&callback=parsePhotos');
+            $.get('http://api-fotki.yandex.ru/api/users/'+username+'/album/'+albumId+'/photos/?format=json&callback=parsePhotos', function () { }, 'script')
         }
 
         // console.log(albumData);
     };
 
+    var totalCount = 0;
     var parsePhotos = function(photosData) {
         if (typeof photosData !== 'object') $('#loading-info').html('Ошибка при загрузке информации о фотографиях!');
         else {
             var imgData, imgDataOriginal, imgDataBig;
             // console.log(photosData);
-            document.title = pageTitle + ' — ' + photosData.title;
+            // console.log(photosData.entries.length);
 
-            for (var i = 0; i < photosData.imageCount; i++) {
-                if (typeof photosData.entries[i] != 'undefined') {
-                    // this if just fixes a strange bug that sometime appears in feed
-
-                    imgData = photosData.entries[i].img[previewSize];
-                    if (typeof photosData.entries[i].img.XXXL != 'undefined') {
-                        // some really small photos does not have these sizes at all
-                        imgDataBig = photosData.entries[i].img.XXXL;
-                        imgDataOriginal = photosData.entries[i].img.XXL;
-                    }
-                    else {
-                        imgDataBig = imgData;
-                        imgDataOriginal = imgData;
-                    }
-
-                    galleria.append('<a href="'+imgDataBig.href+'"><img ' +
-                            'src="'+imgData.href+'" ' +
-                            'width="'+imgData.width+'" ' +
-                            'height="'+imgData.height+'" ' +
-                            'alt="'+photosData.entries[i].title+'" ' +
-    //                        'data-big="'+imgDataOriginal.href+'" ' +   // you can uncomment this if you have descriptive titles in yandex albums
-                            '></a>');
+            for (var i in photosData.entries) {
+                imgData = photosData.entries[i].img[previewSize];
+                if (typeof photosData.entries[i].img.XXXL != 'undefined') {
+                    // some really small photos does not have these sizes at all
+                    imgDataBig = photosData.entries[i].img.XXXL;
+                    imgDataOriginal = photosData.entries[i].img.XXL;
                 }
+                else {
+                    imgDataBig = imgData;
+                    imgDataOriginal = imgData;
+                }
+
+                totalCount++;
+                galleria.prepend('<a href="'+imgDataBig.href+'"><img ' +
+                        'src="'+imgData.href+'" ' +
+                        'width="'+imgData.width+'" ' +
+                        'height="'+imgData.height+'" ' +
+                        'alt="'+photosData.entries[i].title+'" ' +
+//                        'data-big="'+imgDataOriginal.href+'" ' +   // you can uncomment this if you have descriptive titles in yandex albums
+                        '></a>');
+
+            }
+
+            // multipaging
+            if (photosData.links.next) $.get(photosData.links.next+'?format=json&callback=parsePhotos', function () { }, 'script');
+            else {
+//                 console.log('totalCount', totalCount);
+                document.title = document.title + ' — ' + photosData.title;
+                $('#loading-info').hide();
+                $('#back-to-albums').css('display', 'block');
+
+                // Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js');
+                // Galleria.loadTheme('/galleria/themes/twelve/galleria.twelve.min.js');
+                // read http://galleria.io/docs/getting_started/quick_start/ for customizing for your best experience
+
+                Galleria.loadTheme('/galleria-themes/folio/galleria.folio.min.js');
+                galleria.galleria().show();
             }
         }
-
-        $('#loading-info').hide();
-        // Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js');
-        // Galleria.loadTheme('/galleria/themes/twelve/galleria.twelve.min.js');
-        // read http://galleria.io/docs/getting_started/quick_start/ for customizing for our best experience
-
-        Galleria.loadTheme('/galleria-themes/folio/galleria.folio.min.js');
-        galleria.galleria().show();
     };
 
 </script>
 
-</body>
-</html>
+{include file="includes/footer.tpl"}
