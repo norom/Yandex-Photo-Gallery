@@ -1,11 +1,11 @@
 <?php
 $allconfig = array ();
 
-if (isset ($_SERVER['SERVER_NAME']) && strstr($_SERVER['SERVER_NAME'], 'aldekein.lc') !== false) {
+if (isset ($_SERVER['SERVER_NAME']) && strstr($_SERVER['SERVER_NAME'], 'fotker.lc') !== false) {
     $config =
     array (
-        'siteurl' => 'http://photo.aldekein.lc/',
-        'sitepath' => 'd:/www/home/aldekein.lc/photo/'
+        'siteurl' => 'http://fotker.lc/',
+        'sitepath' => 'd:/www/home/fotker.lc/www/'
     );
 }
 else {

@@ -4,6 +4,7 @@
     <title>{$sitetitle}{if isset($customtitle)} &mdash; {$customtitle}{/if}</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="{$siteurl}css/general.css" type="text/css" media="screen" />
+    <link rel="shortcut icon" href="{$siteurl}favicon.ico" type="image/x-icon" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
     <script src="/js/galleria-1.2.6.js"></script>

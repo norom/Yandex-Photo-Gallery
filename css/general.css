@@ -1,9 +1,10 @@
 body {
     text-align: center;
+    background: url(/img/bg.png);
 }
 
 body.parrots {
-    background: url(http://cdn.graphicsfactory.com/clip-art/image_files/image/7/1293007-022606_birdsofafeather.jpg);
+
 }
 
 #galleria {
@@ -57,23 +58,39 @@ body.parrots {
     width: 200px;
 }
 
+#login-block-wrapper {
+    border: 10px solid rgba(200, 200, 200, 0.2);
+    margin: 80px auto;
+    width: 500px;
+    border-radius: 22px;
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+
 #login-block {
-    margin: 50px auto;
-    width: 450px;
-    background: rgba(140,140,250,0.9);
-    border-radius: 10px;
+    font-family: Verdana;
+    font-size: 10pt;
+    color: #333;
+    border: 2px solid #c5c9b1;
+    border-radius: 12px;
+    background: #F0EDDC;
     padding: 20px 20px 40px 20px;
     text-align: center;
 }
 
 #login-block input[type=text] {
     width: 330px;
-    height: 30px;
+    height: 20px;
     border-radius: 6px;
-    border: 1px solid #1e90ff;
+    border: 1px solid #dae0c2;
     padding: 5px 5px 5px 10px;
-    margin-top: 15px;
-    margin-left: 45px;
+    margin-top: 7px;
+}
+
+#login-block input[type=image] {
+    position: absolute;
+    margin: 13px 0 0 -25px;
 }
 
 #login-block a {
